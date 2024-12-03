@@ -27,7 +27,7 @@ const Navbar = () => {
           {/* Branding */}
           <Link
             to="/"
-            className="hidden lg:block text-4xl font-extrabold italic tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-gray-900 to-purple-700"
+            className="hidden lg:block text-4xl font-extrabold italic tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-800 via-gray-900 to-purple-800"
           >
             EquiSports
           </Link>

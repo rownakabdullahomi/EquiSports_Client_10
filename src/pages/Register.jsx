@@ -5,20 +5,41 @@ import { AuthContext } from "../providers/AuthProvider";
 
 const Register = () => {
   const navigate = useNavigate();
-  const {userRegister, setUser, googleLogin} = useContext(AuthContext);
+
+  const {userRegister, setUser, googleLogin, updateUserProfile} = useContext(AuthContext);
+
+
 
   const handleRegister = (e)=> {
     e.preventDefault();
     const formData = new FormData(e.target);
-    // const name = formData.get("name");
+    const name = formData.get("name");
+    const photo = formData.get("photo");
     const email = formData.get("email");
     const password = formData.get("password");
+
+    const validatePassword = (password) => {
+      // Check if password meets the criteria
+      const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
+      return regex.test(password);
+    };
+
+    // Validate password
+    if (!validatePassword(password)) {
+      alert(
+        "Password must have at least one uppercase letter, one lowercase letter, and at least 6 characters."
+      );
+      return;
+    }
 
     userRegister(email, password)
     .then(res => {
       // console.log(res.user);
       const user = res.user;
       setUser(user);
+      updateUserProfile({ displayName: name, photoURL: photo })
+      alert("Registration successful!");
+      navigate("/")
     })
     .catch(error => {
       console.log(error.message);
@@ -52,9 +73,8 @@ const Register = () => {
         <form onSubmit={handleRegister}>
           <div className="space-y-4">
             {/* Name Input */}
-            {/* <div>
+            <div>
               <label
-                htmlFor="name"
                 className="block text-sm font-medium text-gray-700"
               >
                 Full Name
@@ -66,12 +86,26 @@ const Register = () => {
                 className="input input-bordered w-full mt-1 focus:ring focus:ring-secondary"
                 required
               />
-            </div> */}
+            </div>
 
+            {/* Photo URL Input */}
+            <div>
+              <label
+                className="block text-sm font-medium text-gray-700"
+              >
+                Photo URL
+              </label>
+              <input
+                type="text"
+                name="photo"
+                placeholder="Enter your Photo URL"
+                className="input input-bordered w-full mt-1 focus:ring focus:ring-secondary"
+                required
+              />
+            </div>
             {/* Email Input */}
             <div>
               <label
-                htmlFor="email"
                 className="block text-sm font-medium text-gray-700"
               >
                 Email Address
@@ -88,7 +122,6 @@ const Register = () => {
             {/* Password Input */}
             <div>
               <label
-                htmlFor="password"
                 className="block text-sm font-medium text-gray-700"
               >
                 Password
@@ -126,7 +159,7 @@ const Register = () => {
         {/* Login Link */}
         <p className="text-center text-sm text-gray-600">
           Already have an account?{" "}
-          <Link to="/login" className="text-primary font-medium">
+          <Link  to="/login" className="text-primary font-medium">
             Login here
           </Link>
         </p>

@@ -84,23 +84,31 @@ const Navbar = () => {
 
         {/* Navbar End */}
         <div className="navbar-end flex items-center space-x-4">
-        <p className="text-sm text-gray-500">{user && user.email}</p>
+          {/* <p className="text-sm text-gray-500">{user && user.email}</p> */}
           {/* User Image */}
-          {/* <div className="tooltip tooltip-bottom" data-tip="Profile">
+          <div className="tooltip tooltip-left" data-tip="Name & Email">
             <div className="relative group">
-              <FaCircleUser className="text-4xl cursor-pointer" />
+              {user && user?.email ? (
+                <img
+                  className="w-10 h-10 rounded-full"
+                  src={user?.photoURL}
+                  alt="User Avatar"
+                />
+              ) : (
+                <FaCircleUser className="text-4xl cursor-pointer" />
+              )}
               <div className="absolute hidden group-hover:block bg-white text-black p-4 rounded-md shadow-lg top-12 right-0">
-                <p className="font-semibold">John Doe</p>
+                <p className="font-semibold">{user && user.displayName}</p>
                 <p className="text-sm text-gray-500">{user && user.email}</p>
-                <Link
+                {/* <Link
                   to="/profile"
                   className="btn btn-sm btn-primary mt-2 w-full"
                 >
                   Profile
-                </Link>
+                </Link> */}
               </div>
             </div>
-          </div> */}
+          </div>
 
           {user && user?.email ? (
             <Link

@@ -1,7 +1,29 @@
+import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Register = () => {
+
+  const {userRegister, setUser} = useContext(AuthContext);
+
+  const handleRegister = (e)=> {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    // const name = formData.get("name");
+    const email = formData.get("email");
+    const password = formData.get("password");
+
+    userRegister(email, password)
+    .then(res => {
+      // console.log(res.user);
+      const user = res.user;
+      setUser(user);
+    })
+    .catch(error => {
+      console.log(error.message);
+    })
+  }
   return (
     <div className=" bg-base-300 flex items-center justify-center p-8">
       <div className="w-full max-w-md bg-white rounded-xl shadow-md p-6 space-y-6">
@@ -13,10 +35,10 @@ const Register = () => {
         </p>
 
         {/* Registration Form */}
-        <form>
+        <form onSubmit={handleRegister}>
           <div className="space-y-4">
             {/* Name Input */}
-            <div>
+            {/* <div>
               <label
                 htmlFor="name"
                 className="block text-sm font-medium text-gray-700"
@@ -24,13 +46,13 @@ const Register = () => {
                 Full Name
               </label>
               <input
-                id="name"
                 type="text"
+                name="name"
                 placeholder="Enter your full name"
                 className="input input-bordered w-full mt-1 focus:ring focus:ring-secondary"
                 required
               />
-            </div>
+            </div> */}
 
             {/* Email Input */}
             <div>
@@ -41,8 +63,8 @@ const Register = () => {
                 Email Address
               </label>
               <input
-                id="email"
                 type="email"
+                name="email"
                 placeholder="Enter your email"
                 className="input input-bordered w-full mt-1 focus:ring focus:ring-secondary"
                 required
@@ -58,8 +80,8 @@ const Register = () => {
                 Password
               </label>
               <input
-                id="password"
                 type="password"
+                name="password"
                 placeholder="Create a password"
                 className="input input-bordered w-full mt-1 focus:ring focus:ring-secondary"
                 required

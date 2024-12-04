@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import { FaCircleUser } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Navbar = () => {
+  const { user, userLogout } = useContext(AuthContext);
+
   const links = (
     <>
       <li>
@@ -18,6 +22,17 @@ const Navbar = () => {
       </li>
     </>
   );
+
+  const handleLogout = () => {
+    userLogout()
+      .then(() => {
+        alert("Logout Successful!");
+      })
+      .catch((error) => {
+        console.log(error.message);
+        alert("Error logging out.");
+      });
+  };
 
   return (
     <div>
@@ -73,23 +88,33 @@ const Navbar = () => {
             <div className="relative group">
               <FaCircleUser className="text-4xl cursor-pointer" />
               <div className="absolute hidden group-hover:block bg-white text-black p-4 rounded-md shadow-lg top-12 right-0">
-                <p className="font-semibold">John Doe</p>
-                <p className="text-sm text-gray-500">johndoe@example.com</p>
-                <Link
+                {/* <p className="font-semibold">John Doe</p> */}
+                <p className="text-sm text-gray-500">{user && user.email}</p>
+                {/* <Link
                   to="/profile"
                   className="btn btn-sm btn-primary mt-2 w-full"
                 >
                   Profile
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>
-          <Link
-            to="/login"
-            className="btn btn-sm btn-outline btn-neutral bg-white px-6"
-          >
-            Login
-          </Link>
+
+          {user && user?.email ? (
+            <Link
+              onClick={handleLogout}
+              className="btn btn-sm btn-outline btn-neutral bg-white px-6"
+            >
+              Logout
+            </Link>
+          ) : (
+            <Link
+              to="/login"
+              className="btn btn-sm btn-outline btn-neutral bg-white px-6"
+            >
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>

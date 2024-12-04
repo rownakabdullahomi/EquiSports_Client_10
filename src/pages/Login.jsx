@@ -1,8 +1,26 @@
-
+import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Login = () => {
+  const { userLogin, setUser } = useContext(AuthContext);
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    userLogin(email, password)
+      .then((res) => {
+        // console.log(res.user);
+        const user = res.user;
+        setUser(user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   return (
     <div className=" bg-base-300 flex items-center justify-center p-8">
       <div className="w-full max-w-md bg-white rounded-xl shadow-md p-6 space-y-6">
@@ -14,7 +32,7 @@ const Login = () => {
         </p>
 
         {/* Login Form */}
-        <form>
+        <form onSubmit={handleLogin}>
           <div className="space-y-4">
             {/* Email Input */}
             <div>
@@ -25,8 +43,8 @@ const Login = () => {
                 Email Address
               </label>
               <input
-                id="email"
                 type="email"
+                name="email"
                 placeholder="Enter your email"
                 className="input input-bordered w-full mt-1 focus:ring focus:ring-primary"
                 required
@@ -42,15 +60,13 @@ const Login = () => {
                 Password
               </label>
               <input
-                id="password"
                 type="password"
+                name="password"
                 placeholder="Enter your password"
                 className="input input-bordered w-full mt-1 focus:ring focus:ring-primary"
                 required
               />
             </div>
-
-
           </div>
 
           {/* Login Button */}
@@ -67,9 +83,7 @@ const Login = () => {
 
         {/* Social Login */}
         <div className="space-y-3">
-          <button
-            className="btn btn-outline w-full flex items-center justify-center"
-          >
+          <button className="btn btn-outline w-full flex items-center justify-center">
             <FcGoogle size={24} />
             Login With Google
           </button>

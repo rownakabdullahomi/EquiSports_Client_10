@@ -19,11 +19,22 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/equipments"),
+        // loader: () => fetch("http://localhost:5000/equipments"),
+        loader: async () => {
+          const response = await fetch("http://localhost:5000/equipments");
+          const data = await response.json();
+          return data; // Data will be provided to the component
+        },
       },
       {
         path: "/all_equipments",
         element: <AllEquipments></AllEquipments>,
+        // loader: () => fetch("http://localhost:5000/equipments/all"),
+        loader: async () => {
+          const response = await fetch("http://localhost:5000/equipments/all");
+          const data = await response.json();
+          return data; // Data will be provided to the component
+        },
       },
       {
         path: "/add_equipments",

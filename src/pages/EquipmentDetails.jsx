@@ -1,7 +1,9 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const EquipmentDetails = () => {
   const equipment = useLoaderData();
+  const navigate = useNavigate();
+  
   const {
     image,
     name,
@@ -19,7 +21,7 @@ const EquipmentDetails = () => {
       <img
         src={image}
         alt={name}
-        className="w-full h-96 object-cover rounded-lg mb-6"
+        className="w-full h-96 object-contain rounded-lg mb-6"
       />
       <h2 className="text-3xl font-bold mb-4">{name}</h2>
       <p className="text-lg text-gray-600 mb-2">
@@ -45,10 +47,13 @@ const EquipmentDetails = () => {
       </p>
 
       {/* Go Back Button */}
-      <div className="flex justify-center mt-6">
-        <Link to={"/"} className="btn btn-secondary btn-outline w-6/12">
-          Go Back
-        </Link>
+      <div className="flex justify-center mt-8">
+      <button
+        onClick={() => navigate(-1)} // Navigate to the previous page
+        className="btn btn-secondary btn-outline w-8/12"
+      >
+        Go Back
+      </button>
       </div>
     </div>
   );

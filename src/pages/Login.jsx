@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 
 const Login = () => {
-  const { userLogin, setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { userLogin, setUser, googleLogin } = useContext(AuthContext);
+
   const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -15,11 +17,26 @@ const Login = () => {
         // console.log(res.user);
         const user = res.user;
         setUser(user);
+        navigate("/");
       })
       .catch((error) => {
         console.log(error.message);
       });
   };
+
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+    .then((res) => {
+      const user = res.user;
+      setUser(user);
+      alert("Google login successful!");
+      navigate("/");
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+  }
 
   return (
     <div className=" bg-base-300 flex items-center justify-center p-8">
@@ -83,7 +100,7 @@ const Login = () => {
 
         {/* Social Login */}
         <div className="space-y-3">
-          <button className="btn btn-outline w-full flex items-center justify-center">
+          <button onClick={handleGoogleLogin} className="btn btn-outline w-full flex items-center justify-center">
             <FcGoogle size={24} />
             Login With Google
           </button>

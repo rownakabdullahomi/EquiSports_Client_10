@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 
 const Register = () => {
-
-  const {userRegister, setUser} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const {userRegister, setUser, googleLogin} = useContext(AuthContext);
 
   const handleRegister = (e)=> {
     e.preventDefault();
@@ -23,6 +23,20 @@ const Register = () => {
     .catch(error => {
       console.log(error.message);
     })
+  }
+
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+    .then((res) => {
+      const user = res.user;
+      setUser(user);
+      alert("Google login successful!");
+      navigate("/");
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
   }
   return (
     <div className=" bg-base-300 flex items-center justify-center p-8">
@@ -103,7 +117,7 @@ const Register = () => {
 
         {/* Social Register */}
         <div className="space-y-3">
-          <button className="btn btn-outline w-full flex items-center justify-center">
+          <button onClick={handleGoogleLogin} className="btn btn-outline w-full flex items-center justify-center">
             <FcGoogle size={24} />
             Register With Google
           </button>

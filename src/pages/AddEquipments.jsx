@@ -1,11 +1,10 @@
 import { useContext } from "react";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 import { AuthContext } from "../providers/AuthProvider";
 
 const AddEquipments = () => {
-
-    const {user} = useContext(AuthContext);
-    // console.log(user.displayName);
+  const { user } = useContext(AuthContext);
+  // console.log(user.displayName);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,31 +20,45 @@ const AddEquipments = () => {
     const stock = e.target.stock.value;
     const description = e.target.description.value;
 
-    const newEquipments = {userName, userEmail, image, name, category, price, rating, customization, processingTime, stock, description};
+    const newEquipments = {
+      userName,
+      userEmail,
+      image,
+      name,
+      category,
+      price,
+      rating,
+      customization,
+      processingTime,
+      stock,
+      description,
+    };
 
     console.log(newEquipments);
 
     // Send data to the Server
     fetch("http://localhost:5000/equipments", {
-        method: "POST",
-        headers: {
-            "content-type" : "application/json"
-        },
-        body: JSON.stringify(newEquipments)
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newEquipments),
     })
-    .then(res => res.json())
-    .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         console.log(data);
-        if(data.insertedId){
-            Swal.fire({
-                title: 'Success!',
-                text: 'Equipments added successfully',
-                icon: 'success',
-                confirmButtonText: 'Done'
-              })
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Equipments added successfully",
+            icon: "success",
+            confirmButtonText: "Done",
+          });
+
+          // Clear the form fields
+          e.target.reset();
         }
-    })
-    
+      });
   };
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg my-10">

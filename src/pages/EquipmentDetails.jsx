@@ -5,6 +5,8 @@ const EquipmentDetails = () => {
   const navigate = useNavigate();
   
   const {
+    userName,
+    userEmail,
     image,
     name,
     category,
@@ -41,6 +43,9 @@ const EquipmentDetails = () => {
       </p>
       <p className="text-lg text-gray-600 mb-2">
         <strong>Processing Time:</strong> {processingTime}
+      </p>
+      <p className="text-lg text-gray-600 mb-2">
+        <strong>Added by:</strong> {userName} (Email : {userEmail})
       </p>
       <p className="text-lg text-gray-600 mb-4">
         <strong>Description:</strong> {description}

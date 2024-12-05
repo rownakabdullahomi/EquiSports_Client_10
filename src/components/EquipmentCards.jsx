@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 /* eslint-disable react/prop-types */
 const EquipmentCards = ({ equipments }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 lg:px-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {equipments.map((equipment) => (
         <div
           key={equipment._id}
@@ -32,9 +32,9 @@ const EquipmentCards = ({ equipments }) => {
               {equipment.stock > 0 ? equipment.stock : "Out of Stock"}
             </p>
           </div>
-          {/* View More Button */}
+          {/* View Details Button */}
           <Link to={`/equipments/${equipment._id}`} className="btn btn-outline btn-neutral mt-4">
-            View More
+            View Details
           </Link>
         </div>
       ))}

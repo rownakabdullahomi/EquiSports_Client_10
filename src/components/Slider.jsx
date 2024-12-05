@@ -29,7 +29,7 @@ const Slider = () => {
 
   return (
     <div className="my-10 px-4 lg:px-6">
-      <h1 className="text-3xl font-bold text-center mb-6 animate__animated animate__bounce animate__infinite animate__slower">
+      <h1 className="text-3xl font-bold text-center mb-6">
         Welcome to EquiSports
       </h1>
       <Swiper

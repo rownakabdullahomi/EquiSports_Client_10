@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { FaCircleUser } from "react-icons/fa6";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
+import { Bounce } from "react-awesome-reveal";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
   const location = useLocation();
@@ -41,12 +43,14 @@ const Navbar = () => {
         {/* Navbar Start */}
         <div className="navbar-start flex items-center">
           {/* Branding */}
-          <Link
-            to="/"
-            className="hidden lg:block text-4xl font-extrabold italic tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-800 via-gray-900 to-purple-800"
-          >
-            EquiSports
-          </Link>
+          <Bounce>
+            <Link
+              to="/"
+              className="hidden lg:block text-4xl font-extrabold italic tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-800 via-gray-900 to-purple-800"
+            >
+              EquiSports
+            </Link>
+          </Bounce>
 
           {/* Dropdown */}
           <div className="dropdown lg:hidden">
@@ -67,9 +71,10 @@ const Navbar = () => {
               </svg>
             </button>
             <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow z-10 text-black">
-              <li className="font-bold italic text-2xl my-2 mx-auto">
+              <li className="font-extrabold italic text-4xl my-2 mx-auto tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-800 via-gray-900 to-purple-800">
                 <Link to="/">EquiSports</Link>
               </li>
+
               {links}
             </ul>
           </div>
@@ -86,7 +91,39 @@ const Navbar = () => {
         <div className="navbar-end flex items-center space-x-4">
           {/* <p className="text-sm text-gray-500">{user && user.email}</p> */}
           {/* User Image */}
-          <div className="tooltip tooltip-left" data-tip="Name & Email">
+          <div>
+            <a
+              data-tooltip-id="userTooltip" // Tooltip ID
+            >
+              {user && user.email ? (
+                <img
+                  className="w-10 h-10 rounded-full"
+                  src={user?.photoURL}
+                  alt="User Avatar"
+                />
+              ) : (
+                <div data-tooltip-id="logoutTooltip">
+                  <FaCircleUser className="text-4xl" />
+                </div>
+              )}
+            </a>
+            {/* Tooltip component */}
+            <Tooltip id="userTooltip" place="left" type="dark" effect="float">
+              <div style={{ textAlign: "center" }}>
+                <p className="font-semibold">{user && user.displayName}</p>
+                <p className="text-sm text-gray-400">{user && user.email}</p>
+              </div>
+            </Tooltip>
+            <Tooltip id="logoutTooltip" place="left" type="dark" effect="float">
+              <div style={{ textAlign: "center" }}>
+                <p className="font-semibold">Hello</p>
+                <p className="text-sm text-gray-400">Login for more!!</p>
+              </div>
+            </Tooltip>
+          </div>
+
+          {/* Basic Tooltip saved for future */}
+          {/* <div className="tooltip tooltip-left" data-tip="Name & Email">
             <div className="relative group">
               {user && user?.email ? (
                 <img
@@ -100,15 +137,10 @@ const Navbar = () => {
               <div className="absolute hidden group-hover:block bg-white text-black p-4 rounded-md shadow-lg top-12 right-0">
                 <p className="font-semibold">{user && user.displayName}</p>
                 <p className="text-sm text-gray-500">{user && user.email}</p>
-                {/* <Link
-                  to="/profile"
-                  className="btn btn-sm btn-primary mt-2 w-full"
-                >
-                  Profile
-                </Link> */}
+                
               </div>
             </div>
-          </div>
+          </div> */}
 
           {user && user?.email ? (
             <Link

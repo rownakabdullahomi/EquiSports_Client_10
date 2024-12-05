@@ -1,3 +1,5 @@
+import { Flip } from "react-awesome-reveal";
+
 const WhyChooseUs = () => {
   const features = [
     {
@@ -39,7 +41,9 @@ const WhyChooseUs = () => {
 
   return (
     <section className="mx-auto py-12 px-4 lg:px-6">
-      <h2 className="text-4xl font-bold text-center mb-8">Why Choose Us?</h2>
+      <Flip>
+        <h2 className="text-4xl font-bold text-center my-10">Why Choose Us?</h2>
+      </Flip>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {features.map((feature, index) => (
           <div

@@ -1,6 +1,6 @@
 // import Swiper core and required modules
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-
+import { Slide } from "react-awesome-reveal";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -22,16 +22,16 @@ const Slider = () => {
       "https://i.ibb.co.com/J5L88Rh/5.jpg",
     ];
 
-
-
     setImages(imageUrls);
   }, []);
 
   return (
     <div className="my-10 px-4 lg:px-6">
-      <h1 className="text-3xl font-bold text-center mb-6">
-        Welcome to EquiSports
-      </h1>
+      <Slide>
+        <h1 className="text-3xl font-bold text-center my-10">
+          Welcome to EquiSports
+        </h1>
+      </Slide>
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         navigation // Enables navigation arrows

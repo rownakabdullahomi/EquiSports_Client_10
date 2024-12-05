@@ -6,6 +6,7 @@ import EquipmentCategories from "../components/EquipmentCategories";
 import { useState } from "react";
 import WhyChooseUs from "../components/WhyChooseUs ";
 import OurPartners from "../components/OurPartners ";
+import { JackInTheBox } from "react-awesome-reveal";
 
 const Home = () => {
   const equipments = useLoaderData();
@@ -36,13 +37,17 @@ const Home = () => {
         <div className="lg:col-span-1">
           <h1 className="text-3xl font-bold text-center mb-6">Categories</h1>
           <div className="bg-gray-100 p-4 rounded-lg shadow-md">
-            <EquipmentCategories handleCategory={handleCategory}></EquipmentCategories>
+            <EquipmentCategories
+              handleCategory={handleCategory}
+            ></EquipmentCategories>
           </div>
         </div>
         <div className="lg:col-span-3 ">
-          <h1 className="text-3xl font-bold text-center mb-6">
-            Latest Products
-          </h1>
+          <JackInTheBox>
+            <h1 className="text-3xl font-bold text-center mb-6">
+              Latest Products
+            </h1>
+          </JackInTheBox>
           <EquipmentCards equipments={filteredEquipments}></EquipmentCards>
         </div>
       </section>

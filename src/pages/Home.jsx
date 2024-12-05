@@ -4,6 +4,8 @@ import EquipmentCards from "../components/EquipmentCards";
 import Loading from "./Loading";
 import EquipmentCategories from "../components/EquipmentCategories";
 import { useState } from "react";
+import WhyChooseUs from "../components/WhyChooseUs ";
+import OurPartners from "../components/OurPartners ";
 
 const Home = () => {
   const equipments = useLoaderData();
@@ -43,6 +45,12 @@ const Home = () => {
           </h1>
           <EquipmentCards equipments={filteredEquipments}></EquipmentCards>
         </div>
+      </section>
+      <section>
+        <WhyChooseUs></WhyChooseUs>
+      </section>
+      <section>
+        <OurPartners></OurPartners>
       </section>
     </div>
   );

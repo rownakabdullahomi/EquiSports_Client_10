@@ -64,13 +64,13 @@ const MyEquipments = () => {
           equipments.map((equipment) => (
             <div
               key={equipment._id}
-              className="card bg-base-200 shadow-lg rounded-lg p-4 border border-gray-200"
+              className="card shadow-lg rounded-lg p-4 border border-gray-200"
             >
               {/* Equipment Image */}
               <img
                 src={equipment.image}
                 alt={equipment.name}
-                className="w-full h-48 object-contain rounded-md mb-4"
+                className="w-7/12 mx-auto h-48 object-fill rounded-lg mb-4"
               />
               {/* Equipment Details */}
               <div className="flex-grow">

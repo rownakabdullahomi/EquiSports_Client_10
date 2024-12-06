@@ -175,7 +175,7 @@ const Navbar = () => {
           {user && user?.email ? (
             <Link
               onClick={handleLogout}
-              className="btn btn-sm btn-outline btn-primary  md:px-6"
+              className="btn btn-sm btn-outline btn-primary"
             >
               Logout
             </Link>
@@ -184,7 +184,7 @@ const Navbar = () => {
             location.pathname !== "/login" && (
               <Link
                 to="/login"
-                className="btn btn-sm btn-outline btn-neutral bg-white md:px-6"
+                className="btn btn-sm btn-outline btn-primary md:px-6"
               >
                 Login
               </Link>

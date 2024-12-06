@@ -5,7 +5,7 @@ const EquipmentCategories = ({handleCategory}) => {
   const [categories, setCategories] = useState(["Featured"]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/equipments/all")
+    fetch("https://b10-a10-equi-sports-server.vercel.app/equipments/all")
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);

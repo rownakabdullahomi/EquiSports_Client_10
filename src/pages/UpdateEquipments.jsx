@@ -37,7 +37,7 @@ const UpdateEquipments = () => {
     };
 
     // Send data to the Server
-    fetch(`http://localhost:5000/equipments/${equipment._id}`, {
+    fetch(`https://b10-a10-equi-sports-server.vercel.app/equipments/${equipment._id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

@@ -21,9 +21,9 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        // loader: () => fetch("http://localhost:5000/equipments"),
+        // loader: () => fetch("https://b10-a10-equi-sports-server.vercel.app/equipments"),
         loader: async () => {
-          const response = await fetch("http://localhost:5000/equipments");
+          const response = await fetch("https://b10-a10-equi-sports-server.vercel.app/equipments");
           const data = await response.json();
           return data; // Data will be provided to the component
         },
@@ -31,9 +31,9 @@ const router = createBrowserRouter([
       {
         path: "/all_equipments",
         element: <AllEquipments></AllEquipments>,
-        // loader: () => fetch("http://localhost:5000/equipments/all"),
+        // loader: () => fetch("https://b10-a10-equi-sports-server.vercel.app/equipments/all"),
         loader: async () => {
-          const response = await fetch("http://localhost:5000/equipments/all");
+          const response = await fetch("https://b10-a10-equi-sports-server.vercel.app/equipments/all");
           const data = await response.json();
           return data; // Data will be provided to the component
         },
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
             <EquipmentDetails></EquipmentDetails>
           </PrivateRoute>
         ),
-        loader: ({ params })=> fetch(`http://localhost:5000/equipments/${params.id}`)
+        loader: ({ params })=> fetch(`https://b10-a10-equi-sports-server.vercel.app/equipments/${params.id}`)
       },
       {
         path: "/update_equipment/:id",
@@ -70,7 +70,7 @@ const router = createBrowserRouter([
             <UpdateEquipments></UpdateEquipments>
           </PrivateRoute>
         ),
-        loader: ({ params })=> fetch(`http://localhost:5000/equipments/${params.id}`)
+        loader: ({ params })=> fetch(`https://b10-a10-equi-sports-server.vercel.app/equipments/${params.id}`)
       },
       {
         path: "/login",

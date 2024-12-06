@@ -9,7 +9,7 @@ const MyEquipments = () => {
   // console.log(user.email);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/equipments/user/${user.email}`)
+    fetch(`https://b10-a10-equi-sports-server.vercel.app/equipments/user/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -29,7 +29,7 @@ const MyEquipments = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/equipments/${_id}`, {
+        fetch(`https://b10-a10-equi-sports-server.vercel.app/equipments/${_id}`, {
           method: "DELETE"
         })
           .then((res) => res.json())

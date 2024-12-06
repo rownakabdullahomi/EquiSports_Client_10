@@ -19,7 +19,7 @@ const Home = () => {
 
   // Handler to filter equipment by category
   const handleCategory = (category) => {
-    if (category === "Best Six") {
+    if (category === "Featured") {
       setFilteredEquipments(equipments); // Show Six equipment limit(6) applied in mongoDB
     } else {
       const filtered = equipments.filter(

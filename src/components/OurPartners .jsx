@@ -1,7 +1,8 @@
 import Lottie from "lottie-react";
 import nikeLogoAnimation from "../../public/lottie/nike-logo.json";
-import adidasLogoAnimation from "../../public/lottie/adidas-logo.json";
+import adidas2 from "../../public/lottie/adidas2.json";
 import { Zoom } from "react-awesome-reveal";
+import Marquee from "react-fast-marquee";
 
 const OurPartners = () => {
   const partners = [
@@ -20,28 +21,45 @@ const OurPartners = () => {
           Our Exclusive Partners
         </h2>
       </Zoom>
-      <div className="grid grid-cols-1 lg:flex lg:justify-between  items-center gap-6">
-        <div className="w-32 h-16 flex justify-center items-center mx-auto">
-          <Lottie animationData={nikeLogoAnimation} loop={true} />
-        </div>
-
-        <div className="w-32 h-16 flex justify-center items-center mx-auto">
-          <Lottie animationData={adidasLogoAnimation} loop={true} />
-        </div>
-
-        {partners.map((logo, index) => (
-          <div
-            key={index}
-            className="w-32 h-16 flex justify-center items-center mx-auto"
-          >
-            <img
-              src={logo}
-              alt={`Partner Logo ${index + 1}`}
-              className="object-contain max-h-full max-w-full"
+      <Marquee
+        speed={50}
+        pauseOnHover={true}
+        //  gradient={false}
+        className="py-4"
+      >
+        <div className="flex lg:gap-x-24 gap-x-8 items-center">
+          {/* Nike Logo Animation */}
+          <div className="w-24 h-16 flex items-center ml-6">
+            <Lottie
+              animationData={nikeLogoAnimation}
+              loop={true}
+              className="mx-auto min-h-full"
             />
           </div>
-        ))}
-      </div>
+
+          {/* Adidas Logo Animation */}
+          <div className="w-24 h-16 flex items-center ">
+            <Lottie
+              animationData={adidas2}
+              loop={true}
+              className="mx-auto min-h-full "
+            />
+          </div>
+
+          {partners.map((logo, index) => (
+            <div
+              key={index}
+              className="w-24 h-16 flex items-center rounded-lg shadow-md p-2 dark:bg-gray-500"
+            >
+              <img
+                src={logo}
+                alt={`Partner Logo ${index + 1}`}
+                className="object-contain max-h-full max-w-full mx-auto"
+              />
+            </div>
+          ))}
+        </div>
+      </Marquee>
     </section>
   );
 };

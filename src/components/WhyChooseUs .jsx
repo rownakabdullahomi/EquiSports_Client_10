@@ -50,7 +50,7 @@ const WhyChooseUs = () => {
             key={index}
             className="flex flex-col items-center text-center p-6 border rounded-lg shadow-md bg-base-200"
           >
-            <div className="text-5xl mb-4">
+            <div className=" mb-4 rounded-full dark:bg-gray-200 border-4 dark:border-gray-400 p-4">
               <img src={feature.image} alt="" />
             </div>
             <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>

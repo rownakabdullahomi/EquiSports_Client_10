@@ -2,14 +2,14 @@
 import { useEffect, useState } from "react";
 
 const EquipmentCategories = ({handleCategory}) => {
-  const [categories, setCategories] = useState(["Best Six"]);
+  const [categories, setCategories] = useState(["Featured"]);
 
   useEffect(() => {
     fetch("http://localhost:5000/equipments/all")
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
-        const uniqueCategories = ["Best Six"];
+        const uniqueCategories = ["Featured"];
         for (let item of data) {
           if (!uniqueCategories.includes(item.category)) {
             uniqueCategories.push(item.category);

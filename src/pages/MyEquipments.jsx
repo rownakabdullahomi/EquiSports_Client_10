@@ -64,7 +64,7 @@ const MyEquipments = () => {
           equipments.map((equipment) => (
             <div
               key={equipment._id}
-              className="card bg-white shadow-lg rounded-lg p-4 border border-gray-200"
+              className="card bg-base-200 shadow-lg rounded-lg p-4 border border-gray-200"
             >
               {/* Equipment Image */}
               <img
@@ -75,13 +75,13 @@ const MyEquipments = () => {
               {/* Equipment Details */}
               <div className="flex-grow">
                 <h3 className="text-xl font-bold mb-2">{equipment.name}</h3>
-                <p className="text-gray-700 mb-1">
+                <p className=" mb-1">
                   <strong>Category:</strong> {equipment.category}
                 </p>
-                <p className="text-gray-700 mb-1">
+                <p className=" mb-1">
                   <strong>Price:</strong> ${equipment.price}
                 </p>
-                <p className="text-gray-700 mb-4">
+                <p className=" mb-4">
                   <strong>Stock:</strong> {equipment.stock}
                 </p>
               </div>

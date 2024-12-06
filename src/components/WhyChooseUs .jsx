@@ -48,7 +48,7 @@ const WhyChooseUs = () => {
         {features.map((feature, index) => (
           <div
             key={index}
-            className="flex flex-col items-center text-center p-6 border rounded-lg shadow-md bg-white"
+            className="flex flex-col items-center text-center p-6 border rounded-lg shadow-md bg-base-200"
           >
             <div className="text-5xl mb-4">
               <img src={feature.image} alt="" />

@@ -40,7 +40,7 @@ const AllEquipments = () => {
       <div className="overflow-x-auto">
         <table className="table-auto w-full border-collapse border border-gray-300">
           <thead>
-            <tr className="bg-gray-200 text-left">
+            <tr className="bg-base-300 text-left">
               <th className="border border-gray-300 px-4 py-2">Serial</th>
               <th className="border border-gray-300 px-4 py-2">Image</th>
               <th className="border border-gray-300 px-4 py-2">Name</th>
@@ -52,7 +52,7 @@ const AllEquipments = () => {
           </thead>
           <tbody>
             {equipments.map((equipment, index) => (
-              <tr key={equipment._id} className="hover:bg-gray-100">
+              <tr key={equipment._id} className="hover:bg-gray-600">
                 {/* Index */}
                 <td className="border border-gray-300 px-4 py-2 text-center">
                   {index + 1}

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaCircleUser } from "react-icons/fa6";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
@@ -8,6 +8,17 @@ import { Tooltip } from "react-tooltip";
 const Navbar = () => {
   const location = useLocation();
   const { user, userLogout } = useContext(AuthContext);
+
+  const [theme, setTheme] = useState("light"); // Default theme
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+
+  // Toggle theme
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
 
   const links = (
     <>
@@ -46,7 +57,7 @@ const Navbar = () => {
           <Bounce>
             <Link
               to="/"
-              className="hidden lg:block text-4xl font-extrabold italic tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-800 via-gray-900 to-purple-800"
+              className="hidden lg:block text-4xl font-extrabold italic tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-green-600 to-purple-600"
             >
               EquiSports
             </Link>
@@ -70,8 +81,8 @@ const Navbar = () => {
                 />
               </svg>
             </button>
-            <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow z-10 text-black">
-              <li className="font-extrabold italic text-4xl my-2 mx-auto tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-800 via-gray-900 to-purple-800">
+            <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow z-10 ">
+              <li className="font-extrabold italic text-4xl my-2 mx-auto tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-green-600 to-purple-600">
                 <Link to="/">EquiSports</Link>
               </li>
 
@@ -108,7 +119,7 @@ const Navbar = () => {
               )}
             </a>
             {/* Tooltip component */}
-            <Tooltip id="userTooltip" place="left" type="dark" effect="float">
+            <Tooltip id="userTooltip" place="bottom" type="dark" effect="float">
               <div style={{ textAlign: "center" }}>
                 <p className="font-semibold">{user && user.displayName}</p>
                 <p className="text-sm text-gray-400">{user && user.email}</p>
@@ -160,6 +171,28 @@ const Navbar = () => {
               </Link>
             )
           )}
+
+          {/* <header className="flex justify-between items-center">
+            <button onClick={toggleTheme} className="btn btn-sm btn-outline">
+              Toggle Theme
+            </button>
+          </header> */}
+
+          {/* Theme Change */}
+          <div className="form-control">
+            <label
+              className="label cursor-pointer tooltip tooltip-bottom"
+              data-tip="Change theme"
+            >
+              {/* <span className="label-text">{theme === "light" ? "Light Mode" : "Dark Mode"}</span> */}
+              <input
+                type="checkbox"
+                className="toggle toggle-primary"
+                checked={theme === "dark"}
+                onChange={toggleTheme}
+              />
+            </label>
+          </div>
         </div>
       </div>
     </div>

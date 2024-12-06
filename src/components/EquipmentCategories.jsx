@@ -26,7 +26,7 @@ const EquipmentCategories = ({handleCategory}) => {
         <li key={index}>
           <button
             onClick={() => handleCategory(category)}
-            className="btn btn-outline w-full text-lg font-medium text-gray-700 hover:text-white"
+            className="btn btn-outline w-full text-lg font-medium  hover:text-white"
           >
             {category}
           </button>

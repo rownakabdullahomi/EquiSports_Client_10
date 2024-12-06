@@ -2,13 +2,14 @@
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Slide } from "react-awesome-reveal";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useEffect, useState } from "react";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { useEffect, useState } from "react";
+
 
 const Slider = () => {
   const [images, setImages] = useState([]);
@@ -45,7 +46,7 @@ const Slider = () => {
             <img
               src={image}
               alt={`Slide ${index + 1}`}
-              className="w-full lg:h-[400px] rounded-lg shadow-md"
+              className="w-full md:h-[400px] h-36 rounded-lg shadow-md"
             />
           </SwiperSlide>
         ))}

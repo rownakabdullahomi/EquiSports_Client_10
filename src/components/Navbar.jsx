@@ -4,6 +4,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import { Bounce } from "react-awesome-reveal";
 import { Tooltip } from "react-tooltip";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const location = useLocation();
@@ -47,11 +48,11 @@ const Navbar = () => {
   const handleLogout = () => {
     userLogout()
       .then(() => {
-        alert("Logout Successful!");
+        toast.success("Logout Successful!");
       })
       .catch((error) => {
-        console.log(error.message);
-        alert("Error logging out.");
+        // console.log(error.message);
+        toast.error("Error logging out! " + error.message);
       });
   };
 

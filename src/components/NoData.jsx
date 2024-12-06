@@ -19,7 +19,7 @@ const NoData = () => {
   
   {/* Subtext */}
   <p className="text-center text-gray-600 dark:text-gray-400 text-lg mb-6">
-    It looks like there's nothing here right now. Please check back later or try refreshing.
+    It looks like there&apos;s nothing here right now. Please check back later or try refreshing.
   </p>
   
  

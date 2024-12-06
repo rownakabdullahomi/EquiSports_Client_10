@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const Register = () => {
 
     // Validate password
     if (!validatePassword(password)) {
-      alert(
+      toast.error(
         "Password must have at least one uppercase letter, one lowercase letter, and at least 6 characters."
       );
       return;
@@ -38,11 +39,11 @@ const Register = () => {
       const user = res.user;
       setUser(user);
       updateUserProfile({ displayName: name, photoURL: photo })
-      alert("Registration successful!");
+      toast.success("Registration Successful!");
       navigate("/")
     })
     .catch(error => {
-      console.log(error.message);
+      toast.error("Registration Failed! " + error.message);
     })
   }
 
@@ -52,17 +53,18 @@ const Register = () => {
     .then((res) => {
       const user = res.user;
       setUser(user);
-      alert("Google login successful!");
+      toast.success("Google login successful!");
       navigate("/");
     })
     .catch((error) => {
-      console.log(error.message);
+      // console.log(error.message);
+      toast.error("Google login failed! " + error.message);
     });
   }
   return (
     <div className=" bg-base-300 flex items-center justify-center p-8">
-      <div className="w-full max-w-md bg-white rounded-xl shadow-md p-6 space-y-6">
-        <h2 className="text-3xl font-bold text-center text-gray-700">
+      <div className="w-full max-w-md bg-base-200 rounded-xl border-2 border-gray-700 shadow-md p-6 space-y-6">
+        <h2 className="text-3xl font-bold text-center ">
           Create Your Account
         </h2>
         <p className="text-sm text-center text-gray-500">
@@ -75,7 +77,7 @@ const Register = () => {
             {/* Name Input */}
             <div>
               <label
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium "
               >
                 Full Name
               </label>
@@ -91,7 +93,7 @@ const Register = () => {
             {/* Photo URL Input */}
             <div>
               <label
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium "
               >
                 Photo URL
               </label>
@@ -106,7 +108,7 @@ const Register = () => {
             {/* Email Input */}
             <div>
               <label
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium "
               >
                 Email Address
               </label>

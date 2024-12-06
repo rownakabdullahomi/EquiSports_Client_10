@@ -2,11 +2,12 @@ import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   const { userLogin, setUser, googleLogin } = useContext(AuthContext);
 
   const handleLogin = (e) => {
@@ -19,10 +20,12 @@ const Login = () => {
         // console.log(res.user);
         const user = res.user;
         setUser(user);
+        toast.success("Login successful!");
         navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
-        console.log(error.message);
+        // console.log(error.message);
+        toast.error("Login failed!  " + error.message);
       });
   };
 
@@ -32,21 +35,22 @@ const Login = () => {
     .then((res) => {
       const user = res.user;
       setUser(user);
-      alert("Google login successful!");
+      toast.success("Google login successful!");
       navigate(location?.state ? location.state : "/");
     })
     .catch((error) => {
-      console.log(error.message);
+      // console.log(error.message);
+      toast.error("Google login failed! " + error.message);
     });
   }
 
   return (
     <div className=" bg-base-300 flex items-center justify-center p-8">
-      <div className="w-full max-w-md bg-white rounded-xl shadow-md p-6 space-y-6">
-        <h2 className="text-3xl font-bold text-center text-gray-700">
+      <div className="w-full max-w-md bg-base-200 border-2 border-gray-700 rounded-xl shadow-md p-6 space-y-6">
+        <h2 className="text-3xl font-bold text-center ">
           Welcome Back!
         </h2>
-        <p className="text-sm text-center text-gray-500">
+        <p className="text-sm text-center">
           Please login to your account.
         </p>
 
@@ -57,7 +61,7 @@ const Login = () => {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium "
               >
                 Email Address
               </label>
@@ -74,7 +78,7 @@ const Login = () => {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium "
               >
                 Password
               </label>

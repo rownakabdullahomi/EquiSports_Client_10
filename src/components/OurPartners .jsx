@@ -27,7 +27,7 @@ const OurPartners = () => {
         //  gradient={false}
         className="py-4"
       >
-        <div className="flex lg:gap-x-24 gap-x-8 items-center">
+        <div className="flex md:gap-x-24 gap-x-8 items-center">
           {/* Nike Logo Animation */}
           <div className="w-24 h-16 flex items-center ml-6">
             <Lottie

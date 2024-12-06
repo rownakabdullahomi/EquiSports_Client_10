@@ -3,17 +3,17 @@ import { Link } from "react-router-dom";
 /* eslint-disable react/prop-types */
 const EquipmentCards = ({ equipments }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
       {equipments.map((equipment) => (
         <div
           key={equipment._id}
-          className="card shadow-lg rounded-lg p-4 border border-gray-200 flex flex-col"
+          className="card shadow-lg rounded-lg p-4 border border-gray-200 bg-base-200 flex flex-col"
         >
           {/* Image */}
           <img
             src={equipment.image}
             alt={equipment.name}
-            className="w-full h-48 object-contain rounded-md mb-4"
+            className="w-full h-48 object-center rounded-lg mb-4 "
           />
           {/* Others */}
           <div className="flex-grow">

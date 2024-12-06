@@ -9,8 +9,8 @@ import toast from "react-hot-toast";
 const Navbar = () => {
   const location = useLocation();
   const { user, userLogout } = useContext(AuthContext);
-
   const [theme, setTheme] = useState("light"); // Default theme
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -19,6 +19,11 @@ const Navbar = () => {
   // Toggle theme
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
+
+  // Toggle Menu
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
   };
 
   const links = (
@@ -37,9 +42,7 @@ const Navbar = () => {
       </li>
       {user && (
         <li>
-          <NavLink to="/blogs">
-            Blogs
-          </NavLink>
+          <NavLink to="/blogs">Blogs</NavLink>
         </li>
       )}
     </>
@@ -58,9 +61,9 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar py-2">
+      <div className="navbar justify-between py-2">
         {/* Navbar Start */}
-        <div className="navbar-start flex items-center">
+        <div className=" flex items-center">
           {/* Branding */}
           <Bounce>
             <Link
@@ -73,7 +76,11 @@ const Navbar = () => {
 
           {/* Dropdown */}
           <div className="dropdown lg:hidden">
-            <button className="btn btn-ghost" aria-label="Toggle Menu">
+            <button
+              onClick={toggleDropdown}
+              className="btn btn-ghost"
+              aria-label="Toggle Menu"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -89,13 +96,17 @@ const Navbar = () => {
                 />
               </svg>
             </button>
-            <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow z-10 ">
-              <li className="font-extrabold italic text-4xl my-2 mx-auto tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-green-600 to-purple-600">
-                <Link to="/">EquiSports</Link>
-              </li>
+            {dropdownOpen && (
+              <ul className="menu dropdown-content bg-base-100 rounded-box mt-3 w-52 p-2 shadow z-10 ">
+                <Bounce>
+                  <li className="font-extrabold italic text-xl my-2 mx-auto  text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-green-600 to-purple-600">
+                    <Link to="/">EquiSports</Link>
+                  </li>
+                </Bounce>
 
-              {links}
-            </ul>
+                {links}
+              </ul>
+            )}
           </div>
         </div>
 
@@ -107,7 +118,7 @@ const Navbar = () => {
         </div>
 
         {/* Navbar End */}
-        <div className="navbar-end flex items-center space-x-4">
+        <div className=" flex items-center space-x-4">
           {/* <p className="text-sm text-gray-500">{user && user.email}</p> */}
           {/* User Image */}
           <div>
@@ -116,7 +127,7 @@ const Navbar = () => {
             >
               {user && user.email ? (
                 <img
-                  className="w-10 h-10 rounded-full"
+                  className="w-10 h-10 rounded-full border-2 border-gray-600"
                   src={user?.photoURL}
                   alt="User Avatar"
                 />
@@ -164,7 +175,7 @@ const Navbar = () => {
           {user && user?.email ? (
             <Link
               onClick={handleLogout}
-              className="btn btn-sm btn-outline btn-neutral bg-white px-6"
+              className="btn btn-sm btn-outline btn-primary  md:px-6"
             >
               Logout
             </Link>
@@ -173,7 +184,7 @@ const Navbar = () => {
             location.pathname !== "/login" && (
               <Link
                 to="/login"
-                className="btn btn-sm btn-outline btn-neutral bg-white px-6"
+                className="btn btn-sm btn-outline btn-neutral bg-white md:px-6"
               >
                 Login
               </Link>

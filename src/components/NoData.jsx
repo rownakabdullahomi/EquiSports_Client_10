@@ -12,13 +12,11 @@ const NoData = () => {
     />
   </div>
   
-  {/* Main Message */}
   <p className="text-2xl font-semibold text-red-600 mb-2 animate-bounce">
     No Data Found
   </p>
   
-  {/* Subtext */}
-  <p className="text-center text-gray-600 dark:text-gray-400 text-lg mb-6">
+  <p className="text-center text-gray-600 dark:text-gray-400 text-lg mb-6 px-6">
     It looks like there&apos;s nothing here right now. Please check back later or try refreshing.
   </p>
   

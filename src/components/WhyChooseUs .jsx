@@ -40,7 +40,7 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section className="mx-auto py-12 px-4 lg:px-6">
+    <section className="mx-auto py-8 px-4 lg:px-6">
       <Flip>
         <h2 className="text-4xl font-bold text-center my-10">Why Choose Us?</h2>
       </Flip>

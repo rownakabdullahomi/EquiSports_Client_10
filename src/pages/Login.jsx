@@ -1,14 +1,16 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import toast from "react-hot-toast";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   // console.log(location);
   const { userLogin, setUser, googleLogin } = useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -29,43 +31,40 @@ const Login = () => {
       });
   };
 
-
   const handleGoogleLogin = () => {
     googleLogin()
-    .then((res) => {
-      const user = res.user;
-      setUser(user);
-      toast.success("Google login successful!");
-      navigate(location?.state ? location.state : "/");
-    })
-    .catch((error) => {
-      // console.log(error.message);
-      toast.error("Google login failed! " + error.message);
-    });
-  }
+      .then((res) => {
+        const user = res.user;
+        setUser(user);
+        toast.success("Google login successful!");
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        // console.log(error.message);
+        toast.error("Google login failed! " + error.message);
+      });
+  };
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   return (
     <div className=" bg-base-300 flex items-center justify-center p-8">
-      <div className="w-full max-w-md bg-base-200 border-2 border-gray-700 rounded-xl shadow-md p-6 space-y-6">
-        <h2 className="text-3xl font-bold text-center ">
-          Welcome Back!
-        </h2>
-        <p className="text-sm text-center">
-          Please login to your account.
-        </p>
+      <div className="w-full max-w-md bg-base-200 border border-gray-500 rounded-xl shadow-md p-6 space-y-6">
+        <h2 className="text-3xl font-bold text-center ">Welcome Back!</h2>
+        <p className="text-sm text-center">Please login to your account.</p>
 
         {/* Login Form */}
         <form onSubmit={handleLogin}>
           <div className="space-y-4">
             {/* Email Input */}
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium "
-              >
+              <label htmlFor="email" className="block text-sm font-medium ">
                 Email Address
               </label>
               <input
+                id="email"
                 type="email"
                 name="email"
                 placeholder="Enter your email"
@@ -76,19 +75,30 @@ const Login = () => {
 
             {/* Password Input */}
             <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium "
-              >
+              <label htmlFor="password" className="block text-sm font-medium ">
                 Password
               </label>
-              <input
-                type="password"
-                name="password"
-                placeholder="Enter your password"
-                className="input input-bordered w-full mt-1 focus:ring focus:ring-primary"
-                required
-              />
+              <div className="relative">
+                <input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  placeholder="Enter your password"
+                  className="input input-bordered w-full mt-1 focus:ring focus:ring-primary"
+                  required
+                />
+                <button
+                  type="button"
+                  className="absolute inset-y-0 right-3 flex items-center text-gray-500"
+                  onClick={handleShowPassword}
+                >
+                  {showPassword ? (
+                    <FaEyeSlash size={20} />
+                  ) : (
+                    <FaEye size={20} />
+                  )}
+                </button>
+              </div>
             </div>
           </div>
 
@@ -106,7 +116,10 @@ const Login = () => {
 
         {/* Social Login */}
         <div className="space-y-3">
-          <button onClick={handleGoogleLogin} className="btn btn-outline w-full flex items-center justify-center">
+          <button
+            onClick={handleGoogleLogin}
+            className="btn btn-outline w-full flex items-center justify-center"
+          >
             <FcGoogle size={24} />
             Login With Google
           </button>

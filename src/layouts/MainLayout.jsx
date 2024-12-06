@@ -15,7 +15,7 @@ const MainLayout = () => {
           },
         }}
       />
-      <nav className="bg-base-300 shadow-md px-4 lg:px-6">
+      <nav className="bg-base-300 shadow-md pr-4  lg:px-6">
         <Navbar></Navbar>
       </nav>
       <main>

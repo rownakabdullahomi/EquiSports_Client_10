@@ -1,3 +1,4 @@
+import { AiFillStar } from "react-icons/ai";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
 const EquipmentDetails = () => {
@@ -32,8 +33,19 @@ const EquipmentDetails = () => {
       <p className="text-lg mb-2">
         <strong>Price:</strong> ${price}
       </p>
-      <p className="text-lg mb-2">
-        <strong>Rating:</strong> {rating}/5
+      <p className="text-lg mb-2 flex items-center gap-1">
+        <strong>Rating:</strong> 
+        <div className="flex items-center">
+        {[...Array(5)].map((_, i) => (
+                  <AiFillStar
+                    key={i}
+                    className={`text-yellow-500 ${
+                      i < rating ? "" : "opacity-50"
+                    }`}
+                  />
+                ))}
+                </div> 
+                <span>({rating}/5)</span>
       </p>
       <p className="text-lg mb-2">
         <strong>Stock:</strong> {stock > 0 ? stock : "Out of Stock"}

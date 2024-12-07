@@ -1,23 +1,28 @@
-import { useLoaderData, Link } from "react-router-dom";
+import { useLoaderData, Link, useNavigation } from "react-router-dom";
 import Loading from "./Loading";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
+import NoData from "../components/NoData";
 
 const AllEquipments = () => {
   const loadedEquipments = useLoaderData();
   const [equipments, setEquipments] = useState(loadedEquipments);
   const [isAscending, setIsAscending] = useState(true);
+  const navigation = useNavigation(); // Track navigation state
 
-  if (!loadedEquipments) {
-    return <Loading></Loading>; // Show loading spinner if data is not loaded yet
+  if (navigation.state === "loading") {
+    return <Loading></Loading>
   }
 
-//   if (loadedEquipments.length === 0) {
-//     return (
-//       <div className="text-center">
-//         <p>No equipment found.</p>
-//       </div>
-//     );
-//   }
+  // if (!loadedEquipments) {
+  //   return <Loading></Loading>; // Show loading spinner if data is not loaded yet
+  // }
+
+    if (loadedEquipments.length === 0) {
+      return (
+        <NoData></NoData>
+      );
+    }
 
   const handleSortByPrice = () => {
     const sortedEquipments = [...equipments].sort((a, b) =>
@@ -29,12 +34,16 @@ const AllEquipments = () => {
 
   return (
     <div className="max-w-7xl mx-auto p-6">
-      <div className="flex justify-between items-center mb-6">
-
-        <h2 className="text-3xl font-bold text-center mb-6">All Equipments</h2>
-        <button onClick={handleSortByPrice} className="btn btn-primary">
-          Sort by Price {isAscending ? "(Low to High)" : "(High to Low)"}
-        </button>
+      <Helmet>
+        <title>All Equipments | EquiSports</title>
+      </Helmet>
+      <div className="md:flex md:flex-row flex-col md:justify-between justify-center items-center mb-6">
+        <h2 className="text-3xl font-bold text-center mb-6 md:mb-0">All Equipments</h2>
+        <div className="flex justify-center">
+          <button onClick={handleSortByPrice} className="btn btn-primary">
+            Sort by Price {isAscending ? "(Low to High)" : "(High to Low)"}
+          </button>
+        </div>
       </div>
 
       <div className="overflow-x-auto">

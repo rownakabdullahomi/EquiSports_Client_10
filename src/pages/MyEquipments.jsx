@@ -2,18 +2,25 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
+import NoData from "../components/NoData";
+import Loading from "./Loading";
 
 const MyEquipments = () => {
   const { user } = useContext(AuthContext);
   const [equipments, setEquipments] = useState([]);
+  const [loading, setLoading] = useState(true);
   // console.log(user.email);
 
   useEffect(() => {
-    fetch(`https://b10-a10-equi-sports-server.vercel.app/equipments/user/${user.email}`)
+    fetch(
+      `https://b10-a10-equi-sports-server.vercel.app/equipments/user/${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
         setEquipments(data);
+        setLoading(false);
       });
   }, [user.email]);
 
@@ -29,13 +36,15 @@ const MyEquipments = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://b10-a10-equi-sports-server.vercel.app/equipments/${_id}`, {
-          method: "DELETE"
-        })
+        fetch(
+          `https://b10-a10-equi-sports-server.vercel.app/equipments/${_id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             // console.log(data);
-
 
             if (data.deletedCount > 0) {
               Swal.fire({
@@ -46,7 +55,9 @@ const MyEquipments = () => {
             }
 
             // Update the UI
-            const remaining = equipments.filter((equipment) => equipment._id !== _id);
+            const remaining = equipments.filter(
+              (equipment) => equipment._id !== _id
+            );
             // console.log(remaining);
             setEquipments(remaining);
           });
@@ -54,14 +65,24 @@ const MyEquipments = () => {
     });
   };
 
+  if (loading) {
+    return <Loading></Loading>;
+  }
+
   return (
     <div className="max-w-7xl mx-auto p-6">
+      <Helmet>
+        <title>My Equipments | EquiSports</title>
+      </Helmet>
       <h2 className="text-2xl font-bold text-center mb-6">My Equipments</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {equipments.length === 0 ? (
-          <p>No equipment found. Add some equipment!</p>
-        ) : (
-          equipments.map((equipment) => (
+      {/* {
+        equipments.length === 0 && <NoData></NoData>
+      } */}
+      {equipments?.length === 0 ? (
+        <NoData></NoData>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {equipments.map((equipment) => (
             <div
               key={equipment._id}
               className="card shadow-lg rounded-lg p-4 border border-gray-200"
@@ -75,13 +96,13 @@ const MyEquipments = () => {
               {/* Equipment Details */}
               <div className="flex-grow">
                 <h3 className="text-xl font-bold mb-2">{equipment.name}</h3>
-                <p className=" mb-1">
+                <p className="mb-1">
                   <strong>Category:</strong> {equipment.category}
                 </p>
-                <p className=" mb-1">
+                <p className="mb-1">
                   <strong>Price:</strong> ${equipment.price}
                 </p>
-                <p className=" mb-4">
+                <p className="mb-4">
                   <strong>Stock:</strong> {equipment.stock}
                 </p>
               </div>
@@ -105,9 +126,9 @@ const MyEquipments = () => {
                 </button>
               </div>
             </div>
-          ))
-        )}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

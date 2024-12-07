@@ -21,22 +21,22 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        // loader: () => fetch("https://b10-a10-equi-sports-server.vercel.app/equipments"),
-        loader: async () => {
-          const response = await fetch("https://b10-a10-equi-sports-server.vercel.app/equipments");
-          const data = await response.json();
-          return data; // Data will be provided to the component
-        },
+        loader: () => fetch("https://b10-a10-equi-sports-server.vercel.app/equipments"),
+        // loader: async () => {
+        //   const response = await fetch("https://b10-a10-equi-sports-server.vercel.app/equipments");
+        //   const data = await response.json();
+        //   return data; // Data will be provided to the component
+        // },
       },
       {
         path: "/all_equipments",
         element: <AllEquipments></AllEquipments>,
-        // loader: () => fetch("https://b10-a10-equi-sports-server.vercel.app/equipments/all"),
-        loader: async () => {
-          const response = await fetch("https://b10-a10-equi-sports-server.vercel.app/equipments/all");
-          const data = await response.json();
-          return data; // Data will be provided to the component
-        },
+        loader: () => fetch("https://b10-a10-equi-sports-server.vercel.app/equipments/all"),
+        // loader: async () => {
+        //   const response = await fetch("https://b10-a10-equi-sports-server.vercel.app/equipments/all");
+        //   const data = await response.json();
+        //   return data; // Data will be provided to the component
+        // },
       },
       {
         path: "/add_equipments",

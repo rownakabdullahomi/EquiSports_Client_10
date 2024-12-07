@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigation } from "react-router-dom";
 import Slider from "../components/Slider";
 import EquipmentCards from "../components/EquipmentCards";
 import Loading from "./Loading";
@@ -7,15 +7,20 @@ import { useState } from "react";
 import WhyChooseUs from "../components/WhyChooseUs ";
 import OurPartners from "../components/OurPartners ";
 import { JackInTheBox } from "react-awesome-reveal";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   const equipments = useLoaderData();
   const [filteredEquipments, setFilteredEquipments] = useState(equipments);
-  
+  const navigation = useNavigation(); // Track navigation state
 
-  if (!equipments) {
-    return <Loading></Loading>; // Show loading spinner if data is not loaded yet
+  if (navigation.state === "loading") {
+    return <Loading></Loading>
   }
+
+  // if (!equipments) {
+  //   return <Loading></Loading>; // Show loading spinner if data is not loaded yet
+  // }
 
   // Handler to filter equipment by category
   const handleCategory = (category) => {
@@ -31,6 +36,9 @@ const Home = () => {
 
   return (
     <div>
+       <Helmet>
+        <title>Home | EquiSports</title>
+      </Helmet>
       
       <section>
         <Slider></Slider>

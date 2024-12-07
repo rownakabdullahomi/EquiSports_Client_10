@@ -1,7 +1,10 @@
 # 🏀⚽🎾 EquiSports - Client Side 🚀
 
-### 📜 The live link of the project:
+### 📜 The live link of the project (Client Side):
  🎥 [https://equi-sports-414e7.web.app/](https://equi-sports-414e7.web.app/)
+
+ ### 📜 The live link of the Server Side:
+ 🎥 [b10-a10-equi-sports-server.vercel.app](b10-a10-equi-sports-server.vercel.app)
 
  ---
 
@@ -17,7 +20,8 @@ Whether you're a professional athlete or a fitness enthusiast, EquiSports equips
 
 ## 📋 Project Overview
 
-**EquiSports** is an innovative e-commerce platform tailored for sports enthusiasts. It is designed to simplify the process of discovering and purchasing sports equipment while offering a visually appealing and user-friendly experience. The platform boasts an intuitive interface, advanced filtering options, and a secure authentication system, ensuring a smooth shopping journey for users.
+**EquiSports** is an innovative e-commerce platform tailored for sports enthusiasts. It is designed to simplify the process of discovering and purchasing sports equipment while offering a visually appealing and user-friendly experience. The platform boasts an intuitive interface, advanced filtering options, and a secure authentication system, ensuring a smooth shopping journey for users. 
+It is hosted on **Firebase** for optimal performance and scalability.
 
 ---
 

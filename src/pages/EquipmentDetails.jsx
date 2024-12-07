@@ -1,9 +1,12 @@
+import { Helmet } from "react-helmet-async";
 import { AiFillStar } from "react-icons/ai";
 import { useLoaderData, useNavigate } from "react-router-dom";
+
 
 const EquipmentDetails = () => {
   const equipment = useLoaderData();
   const navigate = useNavigate();
+
   
   const {
     userName,
@@ -21,6 +24,9 @@ const EquipmentDetails = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-base-200 shadow-lg rounded-lg my-10">
+      <Helmet>
+        <title>Equipment Details | EquiSports</title>
+      </Helmet>
       <img
         src={image}
         alt={name}

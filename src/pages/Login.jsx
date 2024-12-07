@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -51,6 +52,9 @@ const Login = () => {
 
   return (
     <div className=" bg-base-300 flex items-center justify-center p-8">
+      <Helmet>
+        <title>Login | EquiSports</title>
+      </Helmet>
       <div className="w-full max-w-md bg-base-200 border border-gray-500 rounded-xl shadow-md p-6 space-y-6">
         <h2 className="text-3xl font-bold text-center ">Welcome Back!</h2>
         <p className="text-sm text-center">Please login to your account.</p>

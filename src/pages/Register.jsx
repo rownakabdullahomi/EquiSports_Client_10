@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -68,6 +69,9 @@ const Register = () => {
 
   return (
     <div className=" bg-base-300 flex items-center justify-center p-8">
+      <Helmet>
+        <title>Register | EquiSports</title>
+      </Helmet>
       <div className="w-full max-w-md bg-base-200 rounded-xl border-2 border-gray-700 shadow-md p-6 space-y-6">
         <h2 className="text-3xl font-bold text-center ">Create Your Account</h2>
         <p className="text-sm text-center text-gray-500">

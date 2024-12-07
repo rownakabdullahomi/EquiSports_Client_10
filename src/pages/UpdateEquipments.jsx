@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const UpdateEquipments = () => {
   const { user } = useContext(AuthContext);
@@ -63,6 +64,9 @@ const UpdateEquipments = () => {
   };
   return (
     <div className="max-w-4xl mx-auto p-6 bg-base-200 shadow-lg rounded-lg my-10">
+      <Helmet>
+        <title>Update Equipments | EquiSports</title>
+      </Helmet>
       <h2 className="text-2xl font-bold text-center mb-6 lg:mb-14">
         Update Equipment : {equipment.name}
       </h2>

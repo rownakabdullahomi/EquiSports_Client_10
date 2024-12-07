@@ -48,12 +48,12 @@ This project demonstrates key React concepts, including:
   - `useNavigate`: This hook is used to programmatically navigate to different routes in the app. It's especially useful for redirecting users after actions like logging in or logging out.
   - `useLocation`: Used to get the current URL, which can be helpful for conditional rendering, like displaying different navigation options based on the user's route.
   - `useLoaderData`: Used to access the data loaded by the route's loader function in React Router. It allows components to retrieve preloaded data for a route, improving efficiency and enabling seamless server-client data fetching.
-- `useParams`: Used to access dynamic route parameters in React Router, such as :id or :category. It helps in extracting values from the URL, making it useful for tasks like fetching specific data or rendering content based on the current route's parameters.
+  - `useParams`: Used to access dynamic route parameters in React Router, such as :id or :category. It helps in extracting values from the URL, making it useful for tasks like fetching specific data or rendering content based on the current route's parameters.
 
 - **React Router:**
   - Nested and dynamic routing for smooth navigation.
   - **Private Routes**: Only authenticated users can access certain pages.
-  - Custom error handling page for unavailable routes using `errorElement`.
+  - Custom error handling page for unavailable routes using Error404 page.
 - **Component Lifecycle:** Proper management of component mounting, updating, and unmounting using `useEffect`.
 - **State Management:** Local state management for features like user authentication and form handling.
 - **Context API:** Used for managing global user authentication state across the app.
@@ -124,7 +124,5 @@ This project demonstrates key React concepts, including:
 ---
 
 ## 📧 Contact With Me for More
-
----
 
 ## 🤝 Thank You

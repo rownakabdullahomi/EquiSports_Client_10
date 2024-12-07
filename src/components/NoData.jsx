@@ -1,5 +1,5 @@
 import Lottie from "lottie-react";
-import noData from "../../public/lottie/no-data-found.json";
+import noData from "../lottie/no-data-found.json";
 const NoData = () => {
   return (
     <div className="h-[350px] flex flex-col justify-center items-center bg-base-200 rounded-lg shadow-md py-6 my-10 mx-4 lg:mx-6">

@@ -1,6 +1,6 @@
 import Lottie from "lottie-react";
-import nikeLogoAnimation from "../../public/lottie/nike-logo.json";
-import adidas2 from "../../public/lottie/adidas2.json";
+import nikeLogoAnimation from "../lottie/nike-logo.json";
+import adidas2 from "../lottie/adidas2.json";
 import { Zoom } from "react-awesome-reveal";
 import Marquee from "react-fast-marquee";
 

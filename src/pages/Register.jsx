@@ -79,6 +79,11 @@ const Register = () => {
           alt="Signup Illustration" 
           className="w-full h-[450px] object-contain mx-auto" 
         />
+        <div className="flex justify-center mt-8">
+          <Link to="/" className="btn btn-outline btn-primary text-center">
+            Back to Home
+          </Link>
+        </div>
       </div>
       <div className="w-full max-w-md bg-base-200 rounded-xl border-2 border-gray-700 shadow-md p-6 space-y-6">
         <h2 className="text-3xl font-bold text-center ">Create Your Account</h2>

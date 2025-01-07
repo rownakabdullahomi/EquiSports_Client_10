@@ -20,7 +20,7 @@ const MainLayout = () => {
         <nav className="bg-base-300 shadow-md sticky top-0 z-50">
           <Navbar></Navbar>
         </nav>
-        <main>
+        <main style={{ minHeight: `calc(100vh - 200px)` }}>
           <Outlet></Outlet>
         </main>
         <footer className="">

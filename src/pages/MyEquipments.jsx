@@ -5,6 +5,8 @@ import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import NoData from "../components/NoData";
 import Loading from "./Loading";
+import Rating from "react-rating"; // Import the Rating component
+import { FaStar, FaRegStar } from "react-icons/fa"; // Icons for filled and empty stars
 
 const MyEquipments = () => {
   const { user } = useContext(AuthContext);
@@ -76,12 +78,13 @@ const MyEquipments = () => {
         <div className="overflow-x-auto">
           <table className="table-auto w-full border-collapse border border-gray-200">
             <thead>
-              <tr className="bg-base-200">
+              <tr className="bg-gray-100">
                 <th className="border px-4 py-2">Image</th>
                 <th className="border px-4 py-2">Name</th>
                 <th className="border px-4 py-2">Category</th>
                 <th className="border px-4 py-2">Price</th>
                 <th className="border px-4 py-2">Stock</th>
+                <th className="border px-4 py-2">Rating</th>
                 <th className="border px-4 py-2">Actions</th>
               </tr>
             </thead>
@@ -100,6 +103,14 @@ const MyEquipments = () => {
                   <td className="border px-4 py-2">${equipment.price}</td>
                   <td className="border px-4 py-2">
                     {equipment.stock > 0 ? equipment.stock : "Out of Stock"}
+                  </td>
+                  <td className="border px-4 py-2">
+                    <Rating
+                      readonly
+                      initialRating={equipment.rating}
+                      emptySymbol={<FaRegStar className="text-yellow-400" />}
+                      fullSymbol={<FaStar className="text-yellow-400" />}
+                    />
                   </td>
                   <td className="border px-4 py-2">
                     <div className="flex space-x-2 justify-center">

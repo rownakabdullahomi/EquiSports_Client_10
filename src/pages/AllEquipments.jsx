@@ -44,7 +44,7 @@ const AllEquipments = () => {
         {equipments.map((equipment) => (
           <div
             key={equipment._id}
-            className="bg-base-200 border border-gray-300 rounded-lg shadow-md p-4 flex flex-col items-start justify-between space-y-1 h-full"
+            className="bg-base-200 rounded-lg shadow-md p-4 flex flex-col space-y-1 h-full"
           >
             {/* Image */}
             <img
@@ -53,29 +53,29 @@ const AllEquipments = () => {
               className="w-full h-48 object-contain rounded"
             />
 
-            {/* Name */}
-            <h3 className="text-xl font-bold pt-3">{equipment.name}</h3>
+            <div className="flex-grow">
+              {/* Name */}
+              <h3 className="text-xl font-bold pt-3">{equipment.name}</h3>
 
-            {/* Category */}
-            <p className="text-sm text-gray-500">
-              {equipment.category}
-            </p>
+              {/* Category */}
+              <p className="text-sm text-gray-500">{equipment.category}</p>
 
-            {/* Price */}
-            <p className="text-lg font-semibold text-primary">
-              ${equipment.price}
-            </p>
+              {/* Price */}
+              <p className="text-lg font-semibold text-primary">
+                ${equipment.price}
+              </p>
 
-            {/* Stock */}
-            <p
-              className={
-                equipment.stock > 0 ? "text-green-600" : "text-red-600"
-              }
-            >
-              {equipment.stock > 0
-                ? `In Stock (${equipment.stock})`
-                : "Out of Stock"}
-            </p>
+              {/* Stock */}
+              <p
+                className={
+                  equipment.stock > 0 ? "text-green-600" : "text-red-600"
+                }
+              >
+                {equipment.stock > 0
+                  ? `In Stock (${equipment.stock})`
+                  : "Out of Stock"}
+              </p>
+            </div>
 
             {/* View Details Button */}
             <div className="mt-auto w-full">

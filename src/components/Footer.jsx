@@ -1,9 +1,9 @@
-import icon from '../assets/favicon.png';
+import icon from "../assets/favicon.png";
 
 const Footer = () => {
   return (
-    <div className="bg-base-300 py-10 px-4 lg:px-6">
-      <footer className="footer bg-neutral text-neutral-content p-10 rounded-t-xl">
+    <div className="bg-neutral pt-10 pb-4 px-4 lg:px-6">
+      <footer className="footer  text-neutral-content pb-10">
         <nav>
           <h6 className="footer-title">Services</h6>
           <a className="link link-hover">Branding</a>
@@ -25,7 +25,7 @@ const Footer = () => {
           <a className="link link-hover">Cookie policy</a>
         </nav>
       </footer>
-      <footer className="footer bg-neutral text-neutral-content border-base-300 border-t px-4  md:px-8 py-4 rounded-b-xl">
+      <footer className="footer bg-neutral text-neutral-content border-base-300 border-t pt-4">
         <aside className="grid-flow-col items-center">
           {/* <svg
             width="24"
@@ -40,7 +40,8 @@ const Footer = () => {
           </svg> */}
           <img className="w-6 h-6" src={icon} alt="" />
           <div className="font-semibold w-full md:w-auto">
-            Copyright © {new Date().getFullYear()} - All right reserved by EquiSports. <br />
+            Copyright © {new Date().getFullYear()} - All right reserved by{" "}
+            <span className="font-extrabold italic tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-green-600 to-purple-600">EquiSports</span><br />
             <p className="text-secondary">Powered By: Rownak</p>
           </div>
         </aside>

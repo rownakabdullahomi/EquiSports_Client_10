@@ -5,6 +5,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
+import LoginImage from '../assets/login.png';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -55,6 +56,13 @@ const Login = () => {
       <Helmet>
         <title>Login | EquiSports</title>
       </Helmet>
+      <div className="w-1/2 hidden lg:block">
+        <img 
+          src={LoginImage} 
+          alt="Login Illustration" 
+          className="w-full h-auto max-h-96 object-contain mx-auto" 
+        />
+      </div>
       <div className="w-full max-w-md bg-base-200 border border-gray-500 rounded-xl shadow-md p-6 space-y-6">
         <h2 className="text-3xl font-bold text-center ">Welcome Back!</h2>
         <p className="text-sm text-center">Please login to your account.</p>

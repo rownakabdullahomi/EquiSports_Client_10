@@ -60,7 +60,7 @@ const Navbar = () => {
   };
 
   return (
-    <div>
+    <div className="w-11/12 mx-auto">
       <div className="navbar justify-between py-2">
         {/* Navbar Start */}
         <div className=" flex items-center">

@@ -6,7 +6,7 @@ const AboutUs = () => {
       <h1 className="text-4xl font-bold  text-center py-10">
         About EquiSports
       </h1>
-      <div className="lg:flex w-full">
+      <div className="lg:flex lg:gap-20 w-full">
       <div className="w-1/2 hidden lg:block">
         <img
           src={AboutUsImage}

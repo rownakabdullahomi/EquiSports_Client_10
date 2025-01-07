@@ -21,7 +21,8 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("https://b10-a10-equi-sports-server.vercel.app/equipments"),
+        loader: () =>
+          fetch("https://b10-a10-equi-sports-server.vercel.app/equipments"),
         // loader: async () => {
         //   const response = await fetch("https://b10-a10-equi-sports-server.vercel.app/equipments");
         //   const data = await response.json();
@@ -31,7 +32,8 @@ const router = createBrowserRouter([
       {
         path: "/all_equipments",
         element: <AllEquipments></AllEquipments>,
-        loader: () => fetch("https://b10-a10-equi-sports-server.vercel.app/equipments/all"),
+        loader: () =>
+          fetch("https://b10-a10-equi-sports-server.vercel.app/equipments/all"),
         // loader: async () => {
         //   const response = await fetch("https://b10-a10-equi-sports-server.vercel.app/equipments/all");
         //   const data = await response.json();
@@ -56,12 +58,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/equipments/:id",
-        element: (
-          <PrivateRoute>
-            <EquipmentDetails></EquipmentDetails>
-          </PrivateRoute>
-        ),
-        loader: ({ params })=> fetch(`https://b10-a10-equi-sports-server.vercel.app/equipments/${params.id}`)
+        element: <EquipmentDetails></EquipmentDetails>,
+        loader: ({ params }) =>
+          fetch(
+            `https://b10-a10-equi-sports-server.vercel.app/equipments/${params.id}`
+          ),
       },
       {
         path: "/update_equipment/:id",
@@ -70,7 +71,10 @@ const router = createBrowserRouter([
             <UpdateEquipments></UpdateEquipments>
           </PrivateRoute>
         ),
-        loader: ({ params })=> fetch(`https://b10-a10-equi-sports-server.vercel.app/equipments/${params.id}`)
+        loader: ({ params }) =>
+          fetch(
+            `https://b10-a10-equi-sports-server.vercel.app/equipments/${params.id}`
+          ),
       },
       {
         path: "/login",

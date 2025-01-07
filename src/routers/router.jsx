@@ -11,6 +11,8 @@ import PrivateRoute from "./PrivateRoute";
 import EquipmentDetails from "../pages/EquipmentDetails";
 import UpdateEquipments from "../pages/UpdateEquipments";
 import Blogs from "../pages/Blogs";
+import AboutUs from "../pages/AboutUs";
+import ContactUs from "../pages/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -88,6 +90,14 @@ const router = createBrowserRouter([
       {
         path: "/blogs",
         element: <Blogs></Blogs>,
+      },
+      {
+        path: "/about",
+        element: <AboutUs></AboutUs>,
+      },
+      {
+        path: "/contact",
+        element: <ContactUs></ContactUs>,
       },
     ],
   },

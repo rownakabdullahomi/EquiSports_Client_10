@@ -10,7 +10,6 @@ const MyEquipments = () => {
   const { user } = useContext(AuthContext);
   const [equipments, setEquipments] = useState([]);
   const [loading, setLoading] = useState(true);
-  // console.log(user.email);
 
   useEffect(() => {
     fetch(
@@ -18,14 +17,12 @@ const MyEquipments = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
         setEquipments(data);
         setLoading(false);
       });
   }, [user.email]);
 
   const handleDelete = (_id) => {
-    console.log(_id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -44,22 +41,19 @@ const MyEquipments = () => {
         )
           .then((res) => res.json())
           .then((data) => {
-            // console.log(data);
-
             if (data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",
-                text: "Your equipment been deleted.",
+                text: "Your equipment has been deleted.",
                 icon: "success",
               });
-            }
 
-            // Update the UI
-            const remaining = equipments.filter(
-              (equipment) => equipment._id !== _id
-            );
-            // console.log(remaining);
-            setEquipments(remaining);
+              // Update the UI
+              const remaining = equipments.filter(
+                (equipment) => equipment._id !== _id
+              );
+              setEquipments(remaining);
+            }
           });
       }
     });
@@ -70,63 +64,63 @@ const MyEquipments = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto p-6">
+    <div className="px-4 lg:px-6 mb-10">
       <Helmet>
         <title>My Equipments | EquiSports</title>
       </Helmet>
-      <h2 className="text-2xl font-bold text-center mb-6">My Equipments</h2>
-      {/* {
-        equipments.length === 0 && <NoData></NoData>
-      } */}
+      <h2 className="text-2xl font-bold text-center my-10">My Equipments</h2>
+
       {equipments?.length === 0 ? (
         <NoData></NoData>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {equipments.map((equipment) => (
-            <div
-              key={equipment._id}
-              className="card shadow-lg rounded-lg p-4 border border-gray-200"
-            >
-              {/* Equipment Image */}
-              <img
-                src={equipment.image}
-                alt={equipment.name}
-                className="w-7/12 mx-auto h-48 object-fill rounded-lg mb-4"
-              />
-              {/* Equipment Details */}
-              <div className="flex-grow">
-                <h3 className="text-xl font-bold mb-2">{equipment.name}</h3>
-                <p className="mb-1">
-                  <strong>Category:</strong> {equipment.category}
-                </p>
-                <p className="mb-1">
-                  <strong>Price:</strong> ${equipment.price}
-                </p>
-                <p className="mb-4">
-                  <strong>Stock:</strong> {equipment.stock}
-                </p>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex justify-between items-center">
-                {/* Update Button */}
-                <Link
-                  to={`/update_equipment/${equipment._id}`}
-                  className="btn btn-secondary btn-sm btn-outline"
-                >
-                  Update
-                </Link>
-
-                {/* Delete Button */}
-                <button
-                  onClick={() => handleDelete(equipment._id)}
-                  className="btn btn-sm btn-outline btn-error"
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          ))}
+        <div className="overflow-x-auto">
+          <table className="table-auto w-full border-collapse border border-gray-200">
+            <thead>
+              <tr className="bg-base-200">
+                <th className="border px-4 py-2">Image</th>
+                <th className="border px-4 py-2">Name</th>
+                <th className="border px-4 py-2">Category</th>
+                <th className="border px-4 py-2">Price</th>
+                <th className="border px-4 py-2">Stock</th>
+                <th className="border px-4 py-2">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {equipments.map((equipment) => (
+                <tr key={equipment._id} className="hover:bg-gray-50">
+                  <td className="border px-4 py-2">
+                    <img
+                      src={equipment.image}
+                      alt={equipment.name}
+                      className="w-16 h-16 object-cover rounded-lg mx-auto"
+                    />
+                  </td>
+                  <td className="border px-4 py-2">{equipment.name}</td>
+                  <td className="border px-4 py-2">{equipment.category}</td>
+                  <td className="border px-4 py-2">${equipment.price}</td>
+                  <td className="border px-4 py-2">
+                    {equipment.stock > 0 ? equipment.stock : "Out of Stock"}
+                  </td>
+                  <td className="border px-4 py-2">
+                    <div className="flex space-x-2 justify-center">
+                      <Link
+                        to={`/update_equipment/${equipment._id}`}
+                        className="btn btn-secondary btn-sm btn-outline"
+                      >
+                        Update
+                      </Link>
+                      <button
+                        onClick={() => handleDelete(equipment._id)}
+                        className="btn btn-sm btn-outline btn-error"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
     </div>

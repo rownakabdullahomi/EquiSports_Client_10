@@ -29,7 +29,7 @@ const EquipmentCards = ({ equipments }) => {
           <img
             src={equipment.image}
             alt={equipment.name}
-            className="w-full h-48 object-center rounded-lg mb-4"
+            className="w-full h-48 object-contain rounded-lg mb-4"
           />
 
           {/* Others */}

@@ -5,7 +5,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
-import LoginImage from '../assets/login.png';
+import LoginImage from '../assets/login.gif';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -52,7 +52,7 @@ const Login = () => {
   };
 
   return (
-    <div className=" bg-base-300 flex items-center justify-center p-8">
+    <div className=" bg-base-300 flex items-center justify-center p-8 lg:gap-20">
       <Helmet>
         <title>Login | EquiSports</title>
       </Helmet>

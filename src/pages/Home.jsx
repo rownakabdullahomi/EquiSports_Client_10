@@ -45,7 +45,7 @@ const Home = () => {
       </section>
       <section className="grid grid-cols-1 lg:grid-cols-4 gap-6 px-4 lg:px-6">
         <div className="lg:col-span-1">
-          <h1 className="text-3xl font-bold text-center mb-6">Categories</h1>
+          <h1 className="text-3xl font-bold text-center mb-10">Categories</h1>
           <div className="bg-base-300 p-4 rounded-lg shadow-md">
             <EquipmentCategories
               handleCategory={handleCategory}
@@ -54,7 +54,7 @@ const Home = () => {
         </div>
         <div className="lg:col-span-3 ">
           <JackInTheBox>
-            <h1 className="text-3xl font-bold text-center mb-6">
+            <h1 className="text-3xl font-bold text-center mb-10">
               Latest Products
             </h1>
           </JackInTheBox>

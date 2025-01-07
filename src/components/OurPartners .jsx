@@ -15,9 +15,9 @@ const OurPartners = () => {
   ];
 
   return (
-    <section className="mx-auto px-6 lg:px-10 py-12">
+    <section className="mx-auto px-4 lg:px-6 mb-10">
       <Zoom>
-        <h2 className="text-4xl font-bold text-center lg:mb-20 mb-10">
+        <h2 className="text-4xl font-bold text-center my-10">
           Our Exclusive Partners
         </h2>
       </Zoom>

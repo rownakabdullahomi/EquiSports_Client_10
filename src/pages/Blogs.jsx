@@ -36,7 +36,7 @@ const Blogs = () => {
       </Helmet>
 
       {/* Header Section */}
-      <div className="flex flex-col md:flex-row items-center gap-8 my-10">
+      <div className="flex flex-col md:flex-row items-center gap-10 my-10">
         <div className="flex-1">
           <h1 className="text-4xl font-bold text-blue-600 mb-10">
             Welcome to Our Blog

@@ -53,7 +53,6 @@ Whether you're a **professional athlete or a fitness enthusiast**, EquiSports is
 ### 🔐 **Authentication & Security**  
 - Firebase Authentication (Google & Email/Password login)  
 - JWT-based secure routes  
-- Role-based access control for users and admins  
 
 ### 🛒 **E-Commerce Functionality**  
 - Explore **category-based** sports equipment  

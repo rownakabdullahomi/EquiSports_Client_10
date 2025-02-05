@@ -1,6 +1,3 @@
-Here's your beautifully formatted and structured `README.md` file based on your requirements:
-
----
 
 # 🏀⚽🎾 EquiSports - Client Side 🚀  
 

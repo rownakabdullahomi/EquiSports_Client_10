@@ -1,8 +1,8 @@
 
 # 🏀⚽🎾 EquiSports - Client Side 🚀  
 
-![EquiSports](https://i.ibb.co.com/LXHdMPSz/Screenshot-1.png) 
-![EquiSports](https://i.ibb.co.com/Djrzsb3/Screenshot-2.png) 
+![EquiSports - Screenshot 1](https://i.ibb.co/LXHdMPSz/Screenshot-1.png)  
+![EquiSports - Screenshot 2](https://i.ibb.co/Djrzsb3/Screenshot-2.png)  
 
 ---
 

@@ -52,7 +52,7 @@ Whether you're a **professional athlete or a fitness enthusiast**, EquiSports is
 
 ### 🔐 **Authentication & Security**  
 - Firebase Authentication (Google & Email/Password login)  
-- JWT-based secure routes  
+- Secure routes  
 
 ### 🛒 **E-Commerce Functionality**  
 - Explore **category-based** sports equipment  
@@ -69,9 +69,9 @@ Whether you're a **professional athlete or a fitness enthusiast**, EquiSports is
 - Sweet Alert for confirmation popups  
 - React Hot Toast for real-time alerts  
 
-### 📊 **Admin Features**  
+<!-- ### 📊 **Admin Features**  
 - Manage users, products, and orders  
-- Secure admin dashboard for business insights  
+- Secure admin dashboard for business insights   -->
 
 ### 🔄 **Optimized Performance**  
 - **Vite-powered** fast development environment  
